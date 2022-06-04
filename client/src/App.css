@@ -1,0 +1,89 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap');
+
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+
+
+
+
+.auth-container {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: black;
+  font-weight: bold;
+  font-size: 2rem;
+  
+}
+
+.auth-container::before {
+  content: '';
+  background: url('./assets/background/auth-img.jpg') 
+      no-repeat center center/cover;
+  position: absolute;
+  opacity: 0.9;
+  top: 0px;
+  left: 0px;
+  width: 100vw;
+  height: 100vh;
+  z-index: -1;
+}
+
+.auth-inner-container {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  /* align-items: center; */
+  color: black;
+  font-weight: bold;
+  font-size: 2rem;
+  
+}
+
+.auth-inner-container::before {
+  content: '';
+  background: black;
+  position: absolute;
+  opacity: 0.7;
+  top: 0px;
+  left: 0px;
+  width: 100vw;
+  height: 100vh;
+  z-index: -1;
+}
+
+
+
+.border-red {
+  border: 2px solid red;
+}
+.border-green {
+  border: 2px solid green;
+}
+.border-blue {
+  border: 2px solid blue;
+}
+.fill-red {
+  background-color:red;
+}
+.fill-green {
+  background-color:green;
+}
+.fill-blue {
+  background-color:blue;
+}
