@@ -4,7 +4,7 @@ import { ThemeProvider, StyledEngineProvider, createTheme, responsiveFontSizes }
 import validator from 'validator';
 import './signup.css';
 import { Route, Switch, Link } from 'react-router-dom';
-
+import Axios from 'axios';
 
 
 // Theme for component
@@ -52,6 +52,9 @@ let theme = createTheme({
 theme = responsiveFontSizes(theme);
 
 const Signup = (props) => {
+    const axiosInstance = Axios.create({
+        baseURL: process.env.REACT_APP_API_URL,
+      });
 
     // useState for email
     const [email, setEmail] = useState('');
@@ -60,19 +63,35 @@ const Signup = (props) => {
     const [password, setPassword] = useState('');
 
     // useEffect to validate email 
-    // useEffect(() => {
-    //     if (email === '') {
-    //         document.getElementById('email').innerHTML = "&nbsp;s";
-    //     } else if (validator.isEmail(email)) {
-    //         document.getElementById('email').innerHTML = "&nbsp;";
-    //     } else {
-    //         document.getElementById('email').innerHTML = "Invalid email format !";
-    //     }
-    // }, [email])
+    useEffect(() => {
+        if (email === '') {
+            document.getElementById('email').innerHTML = "&nbsp;";
+        } else if (validator.isEmail(email)) {
+            document.getElementById('email').innerHTML = "&nbsp;";
+        } else {
+            document.getElementById('email').innerHTML = "Invalid email format !";
+        }
+    }, [email])
 
     // useEffect to handle signup function
-    const handleSubmit = () => {
-
+    const handleSignup = () => {
+        const data = {
+            email: email,
+            password: password
+        }
+        axiosInstance.get(`/user/checkuser/${email}`)
+            .then((res) => {
+                
+                if(res.data===true){
+                    alert("user already exist!");
+                } else if (res.data === false){
+                    axiosInstance.post('/user/addContributor', data)
+                        .then(res => {
+                            alert(`New user Added! - ${email}`)
+                            props.onChange(0);
+                        })
+                }
+            })
     }
 
     return (
@@ -95,7 +114,7 @@ const Signup = (props) => {
                         </Box>
                         <Box width="70%" maxWidth="50rem" marginY="3rem">
 
-                            <form onSubmit={e => handleSubmit(e)}>
+                            <form >
                                 <Box display="flex" flexDirection="" justifyContent="center" alignItems="center" paddingY="1rem">
                                     <Box display='flex' flexDirection='column' justifyContent='flex-start' marginTop="1rem" width="100%" padding="1rem">
 
@@ -116,13 +135,13 @@ const Signup = (props) => {
                                                 }
                                             }}
                                             id="validation-outlined-input"
+
                                         />
                                         <label id="email" className="validator-label" style={{ marginBottom: 10 }}>&nbsp;</label>
-
                                         <TextField
-                                            label={<Typography variant="overline" >Password</Typography>}
+                                            label={<Typography variant="overline" >Confirm Email</Typography>}
                                             variant="outlined"
-
+                                            value={email}
                                             InputProps={{
                                                 style: {
                                                     fontFamily: 'Arial',
@@ -134,13 +153,33 @@ const Signup = (props) => {
                                                 }
                                             }}
                                             id="validation-outlined-input"
+                                            onChange={e => setEmail(e.target.value)}
+                                        />
+                                        <label id="email" className="validator-label" style={{ marginBottom: 10 }}>&nbsp;</label>
+
+                                        <TextField
+                                            label={<Typography variant="overline" >Password</Typography>}
+                                            variant="outlined"
+                                            value={password}
+                                            InputProps={{
+                                                style: {
+                                                    fontFamily: 'Arial',
+                                                    color: 'white',
+                                                    border: "1px solid #ffffff",
+                                                    '&$active': {
+                                                        border: "0px",
+                                                    },
+                                                }
+                                            }}
+                                            id="validation-outlined-input"
+                                            onChange={e => setPassword(e.target.value)}
                                         />
                                     </Box>
                                 </Box>
                             </form>
 
                             <Box display='flex' flexDirection="row" justifyContent='flex-start' paddingX="1rem" width="70%" >
-                                <Button variant="contained" color="primary" className="buttonwide" type='submit' >signup</Button>
+                                <Button variant="contained" color="primary" className="buttonwide" type='submit' onClick={handleSignup} >signup</Button>
                             </Box>
                         </Box>
                     </Box>

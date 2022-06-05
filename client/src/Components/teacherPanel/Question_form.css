@@ -1,0 +1,223 @@
+/* 5th part of CSS after Header Part(2st Page) the Question Form Part(2st Page) */
+
+/* Subject Name Top Section */
+.question_form{
+    background-color: #F4F4F9;
+    height: 100%;
+    padding-bottom: 30px;
+}
+
+/* Subject Name Section */
+.section{
+    margin:auto;
+    width: 50%;
+}
+
+/* Subject Name Section(Question Top) */
+.question_form_top{
+    background-color: white;
+    border-left: 15px solid rgb(103, 58, 183);
+    border-top: 10px solid rgb(103, 58, 183);
+    /* border-bottom: 8px solid rgb(103, 58, 183); */
+    border-radius: 8px;
+    padding: 30px 25px;
+    text-transform: capitalize;
+}
+
+/* Subject Name Section(Question Top Name) */
+.question_form_top_name{
+    box-sizing: border-box;
+    font-family: 'Google Sans', Roboto,Arial,sans-serif;
+    font-size: 32px;
+    font-weight: 400;
+    line-height: 40px;
+    line-height: 135%;
+    width: 100%;
+    border: none;
+    outline: none;
+    border-bottom: 1px solid #F4F4F9;
+    color: black;
+    height: 35px;
+    text-align: center;
+}
+
+/* Subject Name Section(Question Top Description) */
+.question_form_top_desc{
+    box-sizing: border-box;
+    margin-top: 10px;
+    font-family: 'Google Sans', Roboto,Arial,sans-serif;
+    font-size: 13px;
+    font-weight: 400;
+    line-height: 40px;
+    width: 100%;
+    border: none;
+    outline: none;
+    border-bottom: 1px solid #F4F4F9;
+    color: black;
+    height: 20px;
+    text-align: center;
+}
+
+/* Question Box */
+.question_boxes{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    border-top: 15px solid rgba(118, 118, 118, 0.3);
+    border-bottom: 10px solid rgb(103, 58, 183);
+}
+
+/* Add Question Section */
+.add_question{
+    background-color: white;
+    border-radius: 8px;
+    padding:25px 22px;
+    text-transform: capitalize;
+    display: flex;
+    flex-direction: column;
+    padding-top:0px;
+    width:93%;
+    margin-left:10px;   
+}
+
+/* For Add Question Top */
+.add_question_top{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+}
+
+/* For Question */
+.question{
+    box-sizing: border-box;
+    margin-top: 10px;
+   font-family: 'Google Sans',Roboto,Arial,sans-serif;
+   font-size: 15px;
+   font-weight: 400;
+   flex:1;
+   line-height: 40px;
+   width: 40%;
+   border:none;
+   outline:none;
+   color:black;
+   height:40px;
+   margin-right: 10px;
+   line-height: 10px;
+   padding:10px;
+}
+
+/* For Question(Focus) */
+.question:focus{
+    border-bottom:1px solid rgb(103, 58, 183);
+    background-color:#F4F4F9;
+}
+
+/* For Select Box */
+.select{
+    height:40px;
+    width:230px;
+    border:0.5px solid ;
+    padding:5px 15px;
+    color:black;
+    margin-left:10px;
+    margin-right:10px;
+    border:1.5px solid #F4F4F9;
+    border-radius:3px;
+background:transparent;
+}
+
+/* For Menu Item */
+.menuitem{
+  color: rgba(118, 118, 118, 0.3);
+}
+
+/* For Add Question Body */
+.add_question_body{
+    display:flex;
+    align-items: center;
+}
+
+/* For Text Input */
+.text_input{
+    outline:none;
+    border:none;
+    height:40px;
+    width:490px;
+    font-family: Roboto,Arial,sans-serif;
+    font-size: 13px;
+    font-weight: 400;
+    letter-spacing: .2px;
+    color: #202124;
+}
+
+/* For Text Input (Focus) */
+.text_input:focus{
+    border-bottom:1.5px solid rgb(103, 58, 183);
+}
+
+/* For Add Footer */
+.add_footer{
+    display:flex;
+    justify-content: space-between;
+}
+
+/* For Add Question Bottom */
+.add_question_bottom{
+    margin-top:12px;
+    border-top:1px solid rgba(118, 118, 118, 0.3);
+    display:flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+/* For Add Question Bottom Left */
+.add_question_bottom_left{
+    margin-top:12px;
+    border-top:1px solid rgba(118, 118, 118, 0.3);
+    display:flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+/* For Add Boder */
+.add_border{
+    border-left:6px solid #4285f4;
+}
+
+/* For Question Edit the add button */
+/* .question_edit{
+    background-color:white;
+    display:flex;
+    flex-direction: column;
+    margin-right:12px;
+    margin-top: 10px;
+    margin-bottom: 0;
+    padding:1px;
+    border-radius:3px;
+    height:180px;
+    width:35px;
+} */
+
+/* For Saved Question Section */
+.saved_questions
+{
+    background-color: white;
+    border-radius: 8px;
+    padding:20px 2px;
+    text-transform: capitalize;
+    display:flex;
+    flex-direction: column;  
+}
+
+/* For Edit Option */
+.edit{
+    color:#5f6368;
+    padding:8px 5px;   
+}
+
+/* Subject Name Buttom Section(Save Button) */
+.save_form{
+    margin: 15px;
+}
+

@@ -1,0 +1,44 @@
+/* Card Section (Connected to Mainbody) Recent Paper Part Section (1st Page) */
+/* For doc_card section */
+.doc_card{
+    display:flex;
+    flex-direction: column;
+    box-sizing:border-box;
+    width:200px;
+ margin-right:20px;
+}
+
+/* For doc_card hover section */
+.doc_card:hover{
+    border:1px solid black;
+}
+
+/* For doc_card_image section */
+.doc_card_image{
+    box-sizing:border-box;
+    height:150px;
+    width:198px;
+}
+
+/* For doc_card_content section */
+.doc_card_content{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding:18px;
+}
+
+/* For doc_content section */
+.doc_content{
+    display:flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-top: 5px;
+}
+
+/* For content_left section */
+.content_left{
+    display:flex;
+    flex-direction: row;
+    align-items: center;
+}

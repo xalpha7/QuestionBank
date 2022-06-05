@@ -1,16 +1,19 @@
 const db = require('../models');
-
+const bcrypt = require('bcrypt');
 // create main model
 const User = db.users;
-
+const { v4: uuidv4 } = require('uuid');
 
 // adding a user
 
-const addUser = async (req, res) => {
+const addContributor = async (req, res) => {
+    const encryptedPassword = await bcrypt.hash(req.body.password, 10);
+    const userId = uuidv4();
     let info = {
-        userId: req.body.userId,
+        userId: userId,
+        role: "contributor",
         email: req.body.email,
-        password: req.body.password
+        password: encryptedPassword
     }
 
     const user = await User.create(info)
@@ -35,15 +38,54 @@ const getAllUsers = async (req, res) => {
 
 // get a particular user
 
-const getParticularUser = async (req, res) => {
-    let userId = req.params.userId;
+const checkParticularUser = async (req, res) => {
+    let email = req.params.email;
     let user = await User.findOne({
         where: {
-            userId: userId
+            email: email
         }
     });
 
-    res.status(200).send(user);
+    if (user != null) {
+        // if user exist then send true
+        res.status(201).send(true);
+    } else if (user === null) {
+        // if user does not exist then false
+        res.status(200).send(false);
+    }
+
+}
+const getParticularUser = async (req, res) => {
+    let email = req.params.email;
+    let user = await User.findOne({
+        where: {
+            email: email
+        }
+    });
+   
+    
+
+    if (user != null) {
+        // if user exist then send true
+        res.status(201).send(user.userId);
+    } else if (user === null) {
+        // if user does not exist then false
+        res.status(200).send(false);
+    }
+
+}
+
+const checkUserCreds = async (req, res) => { 
+    let user = await User.findOne({
+        where: {
+            userId: req.body.userId
+        }
+    });
+    const isValid = await bcrypt.compare(req.body.password, user.password);
+    res.status(200).send(isValid);
+    
+    
+
 }
 
 
@@ -69,14 +111,16 @@ const updateUser = async (req, res) => {
 
 const deleteUser = async (req, res) => {
     let userId = req.params.userId;
-    await User.destroy({ where: { userId: userId }});
+    await User.destroy({ where: { userId: userId } });
     res.status(200).send('User is deleted!');
 }
 
 
 module.exports = {
-    addUser,
+    addContributor,
     getAllUsers,
+    checkParticularUser,
+    checkUserCreds,
     getParticularUser,
     updateUser,
     deleteUser

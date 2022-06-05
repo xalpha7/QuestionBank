@@ -1,0 +1,33 @@
+/* CSS PART for both preview1 & preview2 */
+/* For saved_questions */
+.saved_questions
+{
+    background-color: white;
+    border-radius: 8px;
+    padding:20px 2px;
+    text-transform: capitalize;
+    display:flex;
+    flex-direction: column;  
+}
+
+/* For questions */
+.questions{
+    background-color: white;
+    width: 92%;
+    margin-left: 2rem;
+    border-bottom:1.5px solid rgb(103, 58, 183);
+    border-top:1.5px solid rgb(103, 58, 183);
+}
+
+
+/* For option_container */
+.options-container{
+    display: inline-block;
+    width: 50%;
+}
+
+/* For option */
+.option1{
+    margin-left: 2rem;
+}
+

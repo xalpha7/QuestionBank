@@ -1,0 +1,48 @@
+{
+  "name": "react-drag-and-drop",
+  "version": "3.0.0",
+  "description": "Basic Drag and Drop for React",
+  "main": "lib/index.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "start": "budo demo.js --live -- -t babelify",
+    "test": "mocha -R nyan -w --check-leaks --require @babel/register",
+    "build": "babel src/ --out-dir lib",
+    "prepublish": "npm run build"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/asbjornenge/react-drag-and-drop.git"
+  },
+  "keywords": [
+    "react",
+    "react-component",
+    "drag-and-drop"
+  ],
+  "author": "Asbjorn Enge <asbjorn@hanafjedle.net>",
+  "license": "BSD-3-Clause",
+  "bugs": {
+    "url": "https://github.com/asbjornenge/react-drag-and-drop/issues"
+  },
+  "homepage": "https://github.com/asbjornenge/react-drag-and-drop",
+  "devDependencies": {
+    "@babel/cli": "^7.2.0",
+    "@babel/core": "^7.2.0",
+    "@babel/plugin-transform-react-jsx": "^7.2.0",
+    "@babel/preset-env": "^7.2.0",
+    "@babel/register": "^7.0.0",
+    "babelify": "^10.0.0",
+    "budo": "^11.5.0",
+    "enzyme": "^3.7.0",
+    "enzyme-adapter-react-16": "^1.7.1",
+    "expect": "^23.6.0",
+    "mocha": "^5.2.0",
+    "nanodom": "0.0.3",
+    "react": "^16.6.3",
+    "react-dom": "^16.6.3",
+    "sinon": "^7.2.0",
+    "testdom": "^3.0.0"
+  }
+}

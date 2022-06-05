@@ -1,0 +1,45 @@
+/* 3rd part of CSS after (Header) the (Question Paper to Review) 1st Page */
+
+/* Recent Paper Section(Mainbody) */
+.mainbody1{
+    background-color:#F4F4F9; 
+    margin-left:160px;
+    margin-right:180px;
+}
+
+/* Recent Paper Section(Mainbody Top) */
+.main_top1{
+    margin-top: 15px;
+    display:flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* Recent Paper Section(Mainbody Center) */
+.main_top_center1{
+    display:flex;
+    box-sizing: content-box;
+    align-items: center;
+    padding:3px 5px;
+    border-radius:6px;
+    font-size: 16px;
+    
+}
+
+/* Recent Paper Section(Mainbody Center Hover) */
+.main_top_center1:hover{
+    background-color:#F4F4F9 ;
+}
+
+/* Recent Paper Section(Mainbody Right) */
+.main_top_right1{
+    display: flex;
+}
+
+/* Recent Paper Section(Mainbody Does) */
+.main_docs{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    margin-top: 20px;
+}

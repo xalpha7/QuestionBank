@@ -4,6 +4,7 @@ import { ThemeProvider, StyledEngineProvider, createTheme, responsiveFontSizes }
 import validator from 'validator';
 import { alpha, styled } from '@mui/material/styles';
 import { useHistory } from "react-router-dom";
+import Axios from 'axios';
 
 // const CssTextField = styled(TextField)({
 //     "&:not(hover):not($disabled):not($cssFocused):not($error) $notchedOutline": {
@@ -92,6 +93,10 @@ theme = responsiveFontSizes(theme);
 
 const Login = (props) => {
 
+    const axiosInstance = Axios.create({
+        baseURL: process.env.REACT_APP_API_URL,
+      });
+
     // useState for email
     const [email, setEmail] = useState('');
     let history = useHistory();
@@ -110,8 +115,26 @@ const Login = (props) => {
     }, [email])
 
     // function to handle login function
-    const handleSubmit = () => {
-
+    const handleLogin = () => {
+        
+        axiosInstance.get(`/user/getuserId/${email}`)
+            .then((res) => {
+                
+                const data = {
+                    userId: res.data,
+                    password: password
+                }
+                console.log(res.data)
+                axiosInstance.post('/user/checkUserCreds', data)
+                    .then(res => {
+                        if(res.data === true){
+                            alert("user validated!")
+                        }
+                        else if(res.data === false){
+                            alert("invalid credentials")
+                        }
+                    })
+            })
     }
     return (
         <StyledEngineProvider injectFirst>
@@ -133,7 +156,7 @@ const Login = (props) => {
                         </Box>
                         <Box width="70%" maxWidth="50rem" marginY="3rem">
 
-                            <form onSubmit={e => handleSubmit(e)}>
+                            <form >
                                 <Box display="flex" flexDirection="" justifyContent="center" alignItems="center" paddingY="1rem">
                                     <Box display='flex' flexDirection='column' justifyContent='flex-start' marginTop="1rem" width="100%" padding="1rem">
 
@@ -142,7 +165,7 @@ const Login = (props) => {
                                         <TextField
                                             label={<Typography variant="overline" >Email</Typography>}
                                             variant="outlined"
-
+                                            value={email}
                                             InputProps={{
                                                 style: {
                                                     fontFamily: 'Arial',
@@ -154,13 +177,14 @@ const Login = (props) => {
                                                 }
                                             }}
                                             id="validation-outlined-input"
+                                            onChange={e => setEmail(e.target.value)}
                                         />
                                         <label id="email" className="validator-label" style={{ marginBottom: 10 }}>&nbsp;</label>
 
                                         <TextField
                                             label={<Typography variant="overline" >Password</Typography>}
                                             variant="outlined"
-
+                                            value={password}
                                             InputProps={{
                                                 style: {
                                                     fontFamily: 'Arial',
@@ -172,13 +196,14 @@ const Login = (props) => {
                                                 }
                                             }}
                                             id="validation-outlined-input"
+                                            onChange={e => setPassword(e.target.value)}
                                         />
                                     </Box>
                                 </Box>
                             </form>
 
                             <Box display='flex' flexDirection="row" justifyContent='flex-start' paddingX="1rem" width="70%" >
-                                <Button variant="contained" color="primary" className="buttonwide" type='submit'   >Login</Button>
+                                <Button variant="contained" color="primary" className="buttonwide" type='submit' onClick={handleLogin}   >Login</Button>
                             </Box>
                         </Box>
                     </Box>
