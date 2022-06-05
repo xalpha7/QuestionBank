@@ -5,6 +5,9 @@ import validator from 'validator';
 import { alpha, styled } from '@mui/material/styles';
 import { useHistory } from "react-router-dom";
 import Axios from 'axios';
+import { login, contributor } from '../../app/actions';
+import { useDispatch } from 'react-redux';
+
 
 // const CssTextField = styled(TextField)({
 //     "&:not(hover):not($disabled):not($cssFocused):not($error) $notchedOutline": {
@@ -95,8 +98,9 @@ const Login = (props) => {
 
     const axiosInstance = Axios.create({
         baseURL: process.env.REACT_APP_API_URL,
-      });
+    });
 
+    const dispatch = useDispatch();
     // useState for email
     const [email, setEmail] = useState('');
     let history = useHistory();
@@ -116,21 +120,29 @@ const Login = (props) => {
 
     // function to handle login function
     const handleLogin = () => {
-        
+
         axiosInstance.get(`/user/getuserId/${email}`)
             .then((res) => {
-                
+                const userId = res.data;
                 const data = {
                     userId: res.data,
                     password: password
                 }
-                console.log(res.data)
+
                 axiosInstance.post('/user/checkUserCreds', data)
                     .then(res => {
-                        if(res.data === true){
-                            alert("user validated!")
+                        if (res.data === true) {
+                            axiosInstance.get(`/user/getUserCreds/${userId}`)
+                                .then(res => {
+                                    const { userEmail, userRole } = res.data;
+                                    console.log(userEmail)
+                                    dispatch(login(userEmail));
+                                    if (userRole === 'contributor') {
+                                        dispatch(contributor());
+                                    }
+                                })
                         }
-                        else if(res.data === false){
+                        else if (res.data === false) {
                             alert("invalid credentials")
                         }
                     })

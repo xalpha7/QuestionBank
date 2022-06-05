@@ -1,11 +1,11 @@
-import TeacherPanel from "../teacherPanel";
+import Contributor from "../contributor";
 
 
 
 const AppGateway = () => {
     return (
         <>
-        <TeacherPanel />
+        <Contributor />
        
         </>
     );

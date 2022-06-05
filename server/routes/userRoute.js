@@ -7,6 +7,7 @@ router.post('/addContributor', userController.addContributor );
 router.get('/checkuser/:email', userController.checkParticularUser);
 router.get('/getuserId/:email', userController.getParticularUser);
 router.post('/checkUserCreds', userController.checkUserCreds);
+router.get('/getUserCreds/:userId', userController.getUserCreds);
 
 
 module.exports = router;

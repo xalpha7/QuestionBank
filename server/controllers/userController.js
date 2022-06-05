@@ -87,6 +87,24 @@ const checkUserCreds = async (req, res) => {
     
 
 }
+const getUserCreds = async (req, res) => {
+    let user = await User.findOne({
+        where: {
+            userId: req.params.userId
+        }
+    });
+
+    const details = {
+        userEmail: user.email,
+        userRole: user.role
+    }
+    
+    
+    res.status(200).send(details);
+    
+    
+
+}
 
 
 
@@ -122,6 +140,7 @@ module.exports = {
     checkParticularUser,
     checkUserCreds,
     getParticularUser,
+    getUserCreds,
     updateUser,
     deleteUser
 }
