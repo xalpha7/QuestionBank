@@ -135,10 +135,12 @@ const Login = (props) => {
                             axiosInstance.get(`/user/getUserCreds/${userId}`)
                                 .then(res => {
                                     const { userEmail, userRole } = res.data;
-                                    console.log(userEmail)
-                                    dispatch(login(userEmail));
+                                    
                                     if (userRole === 'contributor') {
+                                        dispatch(login(userEmail));
                                         dispatch(contributor());
+                                        localStorage.setItem("email_local", userEmail);
+                                        localStorage.setItem("role_local", userRole);
                                     }
                                 })
                         }

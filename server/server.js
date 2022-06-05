@@ -28,6 +28,9 @@ app.get('/', (req,res) => {
 const userRoute = require("./routes/userRoute");
 app.use( "/user", userRoute);
 
+const contributorRoute = require('./routes/ContributorRoute');
+app.use('/contributor', contributorRoute);
+
 
 //--------------listen to server---------------
 

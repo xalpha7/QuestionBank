@@ -38,6 +38,7 @@ db.sequelize = sequelize;
 
 // configure the tablename
 db.users = require('./userModels')(sequelize, DataTypes);
+db.contributor = require('./ContributorModels')(sequelize, DataTypes);
 
 // if force = true everytime when we run the server we will lose our data as it will recreate table each time.
 db.sequelize.sync({ force: false })

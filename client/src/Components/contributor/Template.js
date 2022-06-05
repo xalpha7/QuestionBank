@@ -22,11 +22,11 @@ function Template() {
     //To Create Form
     const history = useHistory();
     const createForm = () => {   
-        const id_ =uuid();
-        console.log(id_)  
-        history.push("/form/" + id_)
-        history.push("/form1/" + id_)
-        history.push("/form2/" + id_)
+        // const id_ =uuid();
+        // console.log(id_)  
+        history.push("/Question_form4");
+        // history.push("/form1/" + id_)
+        // history.push("/form2/" + id_)
     }   
 
   return (
