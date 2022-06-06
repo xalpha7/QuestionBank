@@ -1,0 +1,38 @@
+@media only screen and (min-width: 1501px) {
+    .moniter{
+        display: inherit;
+    }
+    .tablet{
+        display: none;
+    }
+    .mobile{
+        display: none;
+    }
+  }
+  @media only screen and (max-width: 1500px) and (min-width: 970px) {
+    .moniter{
+        display: none;
+    }
+    .tablet{
+        display: block;
+    }
+    .mobile{
+        display: none;
+    }
+  }
+  
+  
+  @media only screen and (min-width:370px) and (max-width: 969px) {
+    .moniter{
+        display: none;
+    }
+    .tablet{
+        display: none;
+    }
+    .mobile{
+        display: block;
+        
+        
+    }
+  }
+  

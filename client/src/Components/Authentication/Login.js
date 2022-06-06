@@ -5,7 +5,7 @@ import validator from 'validator';
 import { alpha, styled } from '@mui/material/styles';
 import { useHistory } from "react-router-dom";
 import Axios from 'axios';
-import { login, contributor } from '../../app/actions';
+import { login, contributor, reviewer } from '../../app/actions';
 import { useDispatch } from 'react-redux';
 
 
@@ -136,9 +136,15 @@ const Login = (props) => {
                                 .then(res => {
                                     const { userEmail, userRole } = res.data;
                                     
+                                    dispatch(login(userEmail));
                                     if (userRole === 'contributor') {
-                                        dispatch(login(userEmail));
                                         dispatch(contributor());
+                                        localStorage.setItem("email_local", userEmail);
+                                        localStorage.setItem("role_local", userRole);
+                                    }
+                                    else if (userRole === 'Reviewer') {
+                                        
+                                        dispatch(reviewer());
                                         localStorage.setItem("email_local", userEmail);
                                         localStorage.setItem("role_local", userRole);
                                     }

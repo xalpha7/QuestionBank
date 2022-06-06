@@ -20,6 +20,21 @@ const addContributor = async (req, res) => {
     res.status(200).send(user);
 }
 
+
+const addReviewer = async (req, res) => {
+    const encryptedPassword = await bcrypt.hash(req.body.password, 10);
+    const userId = uuidv4();
+    let info = {
+        userId: userId,
+        role: "Reviewer",
+        email: req.body.email,
+        password: encryptedPassword
+    }
+
+    const user = await User.create(info)
+    res.status(200).send(user);
+}
+
 // get all users
 
 const getAllUsers = async (req, res) => {
@@ -136,6 +151,7 @@ const deleteUser = async (req, res) => {
 
 module.exports = {
     addContributor,
+    addReviewer,
     getAllUsers,
     checkParticularUser,
     checkUserCreds,

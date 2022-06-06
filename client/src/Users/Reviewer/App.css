@@ -1,0 +1,66 @@
+
+
+.App {
+  text-align: center;
+  
+}
+
+.App-logo {
+  height: 40vmin;
+  pointer-events: none;
+}
+@media only screen and (min-width: 1501px) {
+  .moniter{
+      display: inherit;
+  }
+  .tablet{
+      display: none;
+  }
+  .mobile{
+      display: none;
+  }
+}
+@media only screen and (max-width: 1500px) and (min-width: 970px) {
+  .moniter{
+      display: none;
+  }
+  .tablet{
+      display: block;
+  }
+  .mobile{
+      display: none;
+  }
+}
+
+
+@media only screen and (min-width:370px) and (max-width: 969px) {
+  .moniter{
+      display: none;
+  }
+  .tablet{
+      display: none;
+  }
+  .mobile{
+      display: block;
+      
+      
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    animation: App-logo-spin infinite 20s linear;
+  }
+}
+
+
+
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}

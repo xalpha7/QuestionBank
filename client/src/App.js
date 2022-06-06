@@ -15,12 +15,16 @@ function App() {
   const role_local = localStorage.getItem("role_local");
 
   if (email_local && role_local) {
+    console.log(role_local)
     if (role_local === 'contributor'){
       dispatch(contributor());
       dispatch(login(email_local));
     }
   }
   const user = useSelector(state => state.users);
+  const role = useSelector(state => state.userrole)
+  
+
   return (
     <Box>
       { /** If user == null then authentication or else the protected route to dashboard */}
